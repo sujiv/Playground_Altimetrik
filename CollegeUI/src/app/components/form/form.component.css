@@ -1,0 +1,28 @@
+.outer div{
+  width: 100%;
+}
+
+.colg table {
+  width: 100%;
+}
+
+th {
+  height: 50px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+label{
+  width : 100px;
+}
+
+input{
+  left:100px;
+}
+
+.map div{
+  background-color: olivedrab;
+  /*width:600px;*/
+  /*height:450px;*/
+  /*align-content: center;*/
+}

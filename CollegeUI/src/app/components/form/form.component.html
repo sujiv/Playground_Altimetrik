@@ -1,0 +1,67 @@
+<div class="outer">
+  <table>
+    <tr>
+      <td>
+        <form class="form">
+          <table>
+            <tr>
+              <td>
+                <label for="zip">Zip Code:</label>
+              </td>
+              <td>
+                <input type="text" name="zip" id="zip" [(ngModel)]='zip'><br>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="distance">Radius: (miles) </label>
+              </td>
+              <td>
+                <input type="text" name="distance" id="distance" [(ngModel)]='distance'><br>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="predominant">No. of predominant Deg. Awarded (eg. 2,3):</label>
+              </td>
+              <td>
+                <input type="text" name="predominant" id="predominant" [(ngModel)]='predominant'><br>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="year">Year:</label>
+              </td>
+              <td>
+                <input type="text" name="year" id="year" [(ngModel)]='year'><br>
+              </td>
+            </tr>
+          </table>
+          <input type='Submit' value="Submit" (click)="onSubmit()">
+        </form>
+      </td>
+      <td width="50%">
+        <span>Maps Location (Using Open Street Map)</span>
+        <div id='map' class='map' ></div>
+      </td>
+    </tr>
+  </table>
+
+  <div  *ngIf="responseData!=null">
+    <span>Total records found: ( {{ total }} )</span><br>
+    <span>Current Page: {{ page }} of ({{ pages }})</span>
+    <input type="Submit" (click)="onPrev()" value="Prev">
+    <input type="Submit" (click)="onNext()" value="Next">
+      <table class="colg">
+        <tr>
+          <th>ID</th><th>Name</th><th>Year</th><th>Size</th>
+        </tr>
+        <tr *ngFor="let result of responseData.resultSet">
+          <td>{{ result.id }}</td>
+          <td>{{ result.schoolName }}</td>
+          <td>{{ result.year }}</td>
+          <td>{{ result.studentSize }}</td>
+        </tr>
+      </table>
+    <div>
+</div>
