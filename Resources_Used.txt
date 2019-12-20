@@ -1,0 +1,27 @@
+Resources used:
+
+1.
+College Search API:
+https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=id,school.name,2013.student.size&api_key=ZD0xcnjzCKdOdtwQMtln7ocw4ec6LMVYfgwMdJv6
+
+API key: ZD0xcnjzCKdOdtwQMtln7ocw4ec6LMVYfgwMdJv6
+
+Documentation:
+https://collegescorecard.ed.gov/data/documentation/
+
+HTTP API Documentation
+https://github.com/RTICWDT/open-data-maker/blob/master/API.md
+
+2.
+ZipCode to Lat Long api:
+
+Zip to Location API:
+https://www.zipcodeapi.com/rest/POYCKK9rDtahKxrvZNCnzyXyTK2B6P4WRBLPKJJVjLAnxoajrVHa4JVxAA2hRRoN/info.json/52557/degrees
+
+API key: POYCKK9rDtahKxrvZNCnzyXyTK2B6P4WRBLPKJJVjLAnxoajrVHa4JVxAA2hRRoN
+
+Documentation:
+https://www.zipcodeapi.com/API
+
+3. Open Street Maps (OSM)
+https://wiki.openstreetmap.org/wiki/API_v0.6
