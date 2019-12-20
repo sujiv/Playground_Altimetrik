@@ -46,9 +46,8 @@ export class CollegeService {
   }
 
   getLatLong(zip: number): Observable<LatLong> {
-    //'https://www.zipcodeapi.com/rest/POYCKK9rDtahKxrvZNCnzyXyTK2B6P4WRBLPKJJVjLAnxoajrVHa4JVxAA2hRRoN/info.json/52557/degrees'
     const zipApi = 'https://www.zipcodeapi.com/rest/POYCKK9rDtahKxrvZNCnzyXyTK2B6P4WRBLPKJJVjLAnxoajrVHa4JVxAA2hRRoN/info.json/'+zip+'/degrees';
     console.log(zipApi);
-    return this.http.get<LatLong>(`https://www.zipcodeapi.com/rest/POYCKK9rDtahKxrvZNCnzyXyTK2B6P4WRBLPKJJVjLAnxoajrVHa4JVxAA2hRRoN/info.json/'${zip}'/degrees`, httpOptions);
+    return this.http.get<LatLong>(`http://localhost:8080/latlong/${zip}`, httpOptions);
   }
 }

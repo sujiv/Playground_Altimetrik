@@ -4,10 +4,7 @@ import altimetrik.playground.dec.colleges.domains.ResponseData;
 import altimetrik.playground.dec.colleges.services.CollegeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,5 +43,10 @@ public class CollegeController {
 
         return ResponseEntity.status(400).body("input errors");
 
+    }
+
+    @GetMapping(value="/latlong/{zip}")
+    public ResponseEntity<String> getLatLong(@PathVariable(name = "zip", required = true) int zip){
+        return ResponseEntity.status(200).body(collegeService.getLatLong(zip).toString());
     }
 }

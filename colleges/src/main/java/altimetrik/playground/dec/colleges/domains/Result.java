@@ -23,6 +23,10 @@ public class Result implements Comparable {
     }
 
     public Result() {
+        this.id = -1;
+        this.schoolName = "!Not Provided";
+        this.year = -1;
+        this.studentSize = -1;
     }
 
     @Override

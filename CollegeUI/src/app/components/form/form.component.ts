@@ -83,11 +83,11 @@ export class FormComponent implements OnInit {
     this.collegerService.getLatLong(this.zip).subscribe(x => {
       this.latitude = x.lat;
       this.longitude = x.lng;
+      this.setCenter();
     });
-    this.setCenter();
   }
 
-  onNext(){
+  onNext() {
     this.page++;
     this.onPage(this.page);
   }
@@ -98,7 +98,8 @@ export class FormComponent implements OnInit {
   }
 
   onPage(pg: number) {
-    console.log('search...' + pg);
+    console.log('searching paage...' + pg);
+    this.total = 0;
     const criteria = {
       zip: this.zip,
       distance: this.distance,

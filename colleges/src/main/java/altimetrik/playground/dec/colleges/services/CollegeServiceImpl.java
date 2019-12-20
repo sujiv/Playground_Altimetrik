@@ -65,13 +65,22 @@ public class CollegeServiceImpl implements CollegeService {
                 List<Result> resultSet = new ArrayList<>();
 
                 for(int i=0; i<results.length(); i++){
-                    JSONObject obj = results.getJSONObject(i);
-                    Result result = new Result();
-                    result.setId(obj.getInt("id"));
-                    result.setStudentSize(obj.getInt(queryParam.get("year")+".student.size"));
-                    result.setYear(Integer.parseInt(queryParam.get("year")));
-                    result.setSchoolName(obj.get("school.name").toString());
-                    resultSet.add(result);
+                    try {
+                        JSONObject obj = results.getJSONObject(i);
+                        Result result = new Result();
+                        if (obj.get("id") != null)
+                            result.setId(obj.getInt("id"));
+                        if (obj.get(queryParam.get("year") + ".student.size") != null)
+                            result.setStudentSize(obj.getInt(queryParam.get("year") + ".student.size"));
+                        result.setYear(Integer.parseInt(queryParam.get("year")));
+                        if (obj.get("school.name") != null)
+                            result.setSchoolName(obj.get("school.name").toString());
+                        resultSet.add(result);
+                    }
+                    catch(JSONException e){
+                        e.printStackTrace();
+                        //Todo: exception ignored
+                    }
                 }
 
                 Collections.sort(resultSet);
@@ -85,6 +94,22 @@ public class CollegeServiceImpl implements CollegeService {
             }
         }
         return null;
+    }
+
+    @Override
+    public JSONObject getLatLong(int zip) {
+        String str = restTemplate.exchange("https://www.zipcodeapi.com/rest/POYCKK9rDtahKxrvZNCnzyXyTK2B6P4WRBLPKJJVjLAnxoajrVHa4JVxAA2hRRoN/info.json/"+zip+"/degrees",
+                HttpMethod.GET,null,String.class).getBody();
+        JSONObject latlong = new JSONObject();
+        try {
+            JSONObject bigObj = new JSONObject(str);
+            latlong.put("lat",bigObj.getDouble("lat"));
+            latlong.put("lng",bigObj.getDouble("lng"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return latlong;
     }
 
     @Override
