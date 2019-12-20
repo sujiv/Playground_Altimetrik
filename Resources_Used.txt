@@ -1,3 +1,7 @@
+FrameWorks:
+BackEnd: SpringBoot Rest
+FrontEnd: Angular8
+
 Resources used:
 
 1.
